@@ -34,6 +34,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'address_search.urls'
@@ -101,8 +102,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = Path(BASE_DIR).joinpath('staticfiles')
 STATIC_URL = '/static/'
 
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    Path(BASE_DIR).joinpath('static'),
+)
 DADATA_API_KEYS = ['6aa1a83b12ebd07d2c017ffcc61e53b25461c95d', '340de381c9a2576551fb62837d4254464825bbf4']
 # ['e5f241224d1f9fcb04b3cef6c63d0295384d3160', '0a3155661543b6c0f9272ad342ad975fd546d05e'],
 # ['28176a806b56ed01bbbd6cc0a425e43a8585e59d', 'b39d35c6396a1079a5651226a62cea4390cb34d7'],
